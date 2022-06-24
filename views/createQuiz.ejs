@@ -1,0 +1,63 @@
+<div id="layoutSidenav">
+    <%- include('./layouts/sidenav') %>
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                        <div class="card shadow-lg border-0 rounded-lg mt-5">
+                            <div class="card-header">
+                                <h3 class="text-center font-weight-light my-4">Create Quiz</h3>
+                            </div>
+                            <div class="card-body">
+                                <form method="post" action="/createQuiz">
+                                    <% if(!isAdd) { %>
+                                    <input type="hidden" name="quizid" value="<%=quiz.quizid%>" />
+                                    <% } %>
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="inputQuizName" type="text" name="quizname"
+                                            placeholder="Enter quiz name" value="<%=quiz.name%>" />
+                                        <label for="inputQuizName">Quiz name</label>
+                                    </div>
+
+                                    <div class="form-floating mb-3">
+                                        <select class="form-control" id="selectSubject" name="subject"
+                                            placeholder="Select Subject" required>
+                                            <%for(let i = 0; i < subjects.length; i++) { %>
+                                            <% if(quiz && quiz.subject == subjects[i].subjectid) { %>
+                                            <option value="<%=subjects[i].subjectid%>" selected><%=subjects[i].sname%>
+                                            </option>
+                                            <% } else { %>
+                                            <option value="<%=subjects[i].subjectid%>"><%=subjects[i].sname%></option>
+                                            <% } %>
+                                            <% } %>
+                                        </select>
+                                        <label for="selectSubject">Select Subject</label>
+                                    </div>
+
+                                    <div id="question">
+                                    </div>
+
+                                    <div class="mt-4 mb-0">
+                                        <div class="d-grid">
+                                            <button type="submit"
+                                                class="btn btn-primary btn-block"><% if(isAdd) { %>Create
+                                                quiz<% } else {%>
+                                                Update quiz<% } %></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        const isAdd = JSON.parse('<%-JSON.stringify(isAdd) %>');
+        const question = JSON.parse('<%-JSON.stringify(quiz) %>').questions || [];
+        console.log(question);
+
+    </script>
+</div>

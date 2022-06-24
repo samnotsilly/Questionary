@@ -1,0 +1,75 @@
+<div id="layoutSidenav">
+    <%- include('./layouts/sidenav') %>
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container">
+                <div class="card shadow-lg border-1 mt-5">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        List of <%=subpage%>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex <%=msg ? "justify-content-between" :"justify-content-end"%>">
+                            <% if(subpage == 'professor') { %>
+                            <a type="button" class="btn btn-primary d-inline-block h-100" href="/addprofessor">
+                                Add Professor
+                            </a>
+                            <% } else if (subpage == 'student') {%>
+                            <a type="button" class="btn btn-primary d-inline-block h-100" href="/addstudent">
+                                Add Student
+                            </a>
+                            <% } else if (subpage == 'course') {%>
+                            <a type="button" class="btn btn-primary d-inline-block h-100" href="/addcourse">
+                                Add Course
+                            </a>
+                            <% } else if (subpage == 'quiz') {%>
+                            <a type="button" class="btn btn-primary d-inline-block h-100" href="/createQuiz">
+                                Add Quiz
+                            </a>
+                            <% } else if (subpage == 'playquiz') {%>
+                            <% if(msg) { %>
+                            <div class="d-flex justify-content-between align-items-center w-100">
+                                <div class="alert alert-danger" role="alert">
+                                    <%=msg%>
+                                </div>
+                                <div>
+                                    <a type="button" class="btn btn-primary d-inline-block h-100" href="/showReport">
+                                        Generte Report
+                                    </a>
+                                    <!-- <a type="button" class="btn btn-primary d-inline-block h-100" href="<%#=filelink%>"
+                                        download>Download</a> -->
+                                </div>
+                            </div>
+                            <% } else { %>
+                            <div class="d-flex justify-content-end">
+                                <a type="button" class="btn btn-primary d-inline-block h-100" href="/showReport">
+                                    Generte Report
+                                </a>
+                            </div>
+                            <% }%>
+                            <% } %>
+                        </div>
+                        <% if(data) { %>
+                        <%- include('./layouts/table') %>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<script>
+    const fileSrc = JSON.parse('<%-JSON.stringify(fileLink)%>')
+    console.log(fileSrc);
+
+    function download(dataurl, filename) {
+        const link = document.createElement("a");
+        link.href = dataurl;
+        link.download = filename;
+        link.click();
+    }
+    if (fileSrc) {
+        download(fileSrc.path, fileSrc.name);
+    }
+
+</script>

@@ -1,0 +1,81 @@
+<table id="datatablesSimple">
+    <thead>
+        <tr>
+            <%Object.values(data.headers).map(val => { %>
+            <th><%=val %></th>
+            <% }) %>
+        </tr>
+    </thead>
+    <!-- <thead>
+        <tr>
+            <th>Sr no.</th>
+            <th>Quiz name</th>
+            <th>Subject</th>
+            <th>Score</th>
+            <th>Action</th>
+        </tr>
+    </thead> -->
+    <tbody>
+        <% if(data.rows.length > 0) { %>
+        <% data.rows.map(row => { %>
+        <tr>
+            <%Object.values(row).map((val, i) => { %>
+            <td>
+                <% if(Array.isArray(val)) { %>
+
+                <% val.map((action,i) => { %>
+                <% if(action.actionIcon) { %>
+                <i class="<%=action.actionIcon%>"></i>
+                <% } %>
+                <% if(action.redirectUrl) { %>
+                <a type="button" class="ml-5 btn-link" href="<%=action.redirectUrl%>">
+                    <%=action.actionText%>
+                </a>
+                <% } else{ %>
+                <%=action.actionText%>
+                <% } %>
+                <% }) %>
+
+                <% } else { %>
+
+                <%=val%>
+
+                <% } %>
+            </td>
+            <% }) %>
+        </tr>
+        <% }) %>
+        <% } else { %>
+        <tr>
+            <td colspan="<%=Object.values(data.headers).length%>">
+                No record found
+            </td>
+        </tr>
+        <% } %>
+        <!-- <tr>
+            <td>1</td>
+            <td>Quiz 1</td>
+            <td>DBMS</td>
+            <td>100/100</td>
+            <td>
+                <i class="fas fa-check-circle text-success"></i>
+                Given
+                <!- <a class="btn-link" href="/playQuiz">
+                    Start quiz
+                </a> ->
+        </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Quiz 1</td>
+            <td>Javascript</td>
+
+            <td>-/100</td>
+            <td>
+                <a type="button" class="btn-link" href="/playQuiz">
+                    Start quiz
+                </a>
+            </td>
+        </tr> -->
+    </tbody>
+</table>

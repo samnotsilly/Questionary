@@ -1,0 +1,54 @@
+<div id="layoutSidenav_nav">
+    <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+            <div class="nav">
+                <!-- <div class="sb-sidenav-menu-heading">Core</div> -->
+                <a class="nav-link <%=page == 'home' ? 'active' : ''%>" href="/">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Dashboard
+                </a>
+                <!-- <% if(sessiondata && sessiondata.usertype == 'admin') { %> -->
+                <!-- <% } %> -->
+
+                <a class="nav-link <%=page == 'listPage' && subpage == 'professor' ? 'active' : ''%>"
+                    href="/listprofessor">
+                    <div class="sb-nav-link-icon"><i class="fas fa-chalkboard-user"></i></div>
+                    Add Professor
+                </a>
+
+                <a class="nav-link <%=page == 'listPage' && subpage == 'course' ? 'active' : ''%>" href="/listcourse">
+                    <div class="sb-nav-link-icon"><i class="fas fa-note-sticky"></i></div>
+                    Add Course
+                </a>
+
+                <a class="nav-link <%=page == 'listPage' && subpage == 'student' ? 'active' : ''%>" href="/liststudent">
+                    <div class="sb-nav-link-icon"><i class="fas fa-graduation-cap"></i></div>
+                    Add Student
+                </a>
+
+
+                <!-- <% if(sessiondata && sessiondata.usertype == 'professor') { %> -->
+                <!-- <% } %> -->
+                <a class="nav-link <%=page == 'listPage' && subpage == 'quiz' ? 'active' : ''%>" href="/listquiz">
+                    <div class="sb-nav-link-icon"><i class="fas fa-plus"></i></div>
+                    List Quiz
+                </a>
+
+
+                <!-- <% if(sessiondata && sessiondata.usertype == 'student') { %> -->
+                <!-- <% } %> -->
+                <a class="nav-link <%=page == 'listPage' && subpage == 'playquiz' ? 'active' : ''%>"
+                    href="/listplayquiz">
+                    <div class="sb-nav-link-icon"><i class="fas fa-list-alt"></i></div>
+                    Play Quiz
+                </a>
+            </div>
+        </div>
+        <div class="sb-sidenav-footer">
+            <div class="small">Logged in as:</div>
+            <% if(sessiondata) { %>
+            <%=sessiondata.name%>
+            <% } %>
+        </div>
+    </nav>
+</div>

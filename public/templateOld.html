@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Node PDF Creator</title>
+    <!- Bootstrap CSS ->
+
+</head>
+
+<body>
+    <h1>User List</h1>
+    <ul>
+        {{#each orders}} {{#ifCond this.order "===" 1}}
+
+        <li>Name: {{this.type}}</li>
+        <li>Age: {{this.address}}</li>
+        <br />
+        {{/ifCond}} {{#ifCond this.order "===" 2}}
+
+        <li>Name: {{this.type}}</li>
+        <li>Age: {{this.description}}</li>
+        <li>price: {{this.price}}</li>
+
+        <br />
+
+        {{/ifCond}} {{#ifCond this.order "===" 3}}
+        <li>Address: {{this.Address}}</li>
+        <li>Address: {{this.address}}</li>
+        <br />
+
+        {{/ifCond}} {{/each}}
+    </ul>
+
+
+</body>
+
+</html>

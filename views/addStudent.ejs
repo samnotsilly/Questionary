@@ -1,0 +1,99 @@
+<div id="layoutSidenav">
+    <%- include('./layouts/sidenav') %>
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <h1 class="mt-4">Add student</h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item"><a href="/liststudent">Student list</a></li>
+                    <li class="breadcrumb-item active">Add student</li>
+                </ol>
+                <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                        <div class="card shadow-lg border-0 rounded-lg mt-5">
+                            <div class="card-header">
+                                <h3 class="text-center font-weight-light my-4">Add Student</h3>
+                            </div>
+                            <div class="card-body">
+                                <form method="post" action="/addstudent">
+                                    <% if(!isAdd) { %>
+                                    <input type="hidden" name="studentid" value="<%=student.studentid%>" />
+                                    <% } %>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3 mb-md-0">
+                                                <input class="form-control" id="inputFirstName" type="text"
+                                                    placeholder="Enter your first name" name="firstname"
+                                                    value="<%=student.firstname%>" required />
+                                                <label for="inputFirstName">First name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating">
+                                                <input class="form-control" id="inputLastName" type="text"
+                                                    placeholder="Enter your last name" name="lastname"
+                                                    value="<%=student.lastname%>" required />
+                                                <label for="inputLastName">Last name</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="inputEmail" type="email"
+                                            placeholder="name@example.com" name="email" value="<%=student.email%>"
+                                            required />
+                                        <label for="inputEmail">Email address</label>
+                                    </div>
+                                    <% if(isAdd) { %>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputUsername" type="text"
+                                                    placeholder="name@example.com" name="username" required />
+                                                <label for="inputUsername">Username</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputPassword" type="password"
+                                                    placeholder="Create a password" name="password" required />
+                                                <label for="inputPassword">Password</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                    <div class="form-floating mb-3">
+                                        <textarea class="form-control" id="inputAddress" placeholder="Enter a Address"
+                                            name="address" required><%=student.address%></textarea>
+                                        <label for="inputAddress">Address</label>
+                                    </div>
+                                    <div class="mb-3 mb-md-0">
+                                        <label for="selectSubject">Select Subjects</label>
+                                        <select class="form-control" id="selectSubject" name="subjects"
+                                            placeholder="Select Subjects" multiple <%=isAdd ? "" : "disabled"%>
+                                            required>
+                                            <% for(let i = 0; i < subjects.length; i++) { %>
+                                            <% if(student.subjects && student.subjects.includes(subjects[i].subjectid)) { %>
+                                            <option value="<%=subjects[i].subjectid%>" selected><%=subjects[i].sname%>
+                                            </option>
+                                            <% } else { %>
+                                            <option value="<%=subjects[i].subjectid%>"><%=subjects[i].sname%></option>
+                                            <% } %>
+                                            <% } %>
+                                        </select>
+                                    </div>
+                                    <div class="mt-4 mb-0">
+                                        <div class="d-grid">
+                                            <button type="submit"
+                                                class="btn btn-primary btn-block"><% if(isAdd) { %>Create<% } else {%>
+                                                Update <% } %></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

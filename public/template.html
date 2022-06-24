@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student | Report</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            font-size: 16px;
+            font-family: Arial, Helvetica, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        header a {
+            font-size: 38px;
+            font-weight: bold;
+            color: #000;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .top-in {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid rgb(151, 151, 151);
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #ccc;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f7f7f7;
+        }
+
+    </style>
+</head>
+
+<body>
+    {{#each student}}
+    <header>
+        <a href="#">TapTroll</a>
+        <div class="top-in">
+            <div class="intro">
+                <p>Student Name: {{this.studentName}}</p>
+                <p>Student Number: {{this.studentNumber}}</p>
+            </div>
+            <div class="intro">
+                <p>Date: {{this.date}}</p>
+            </div>
+        </div>
+    </header>
+    {{/each}}
+
+    <table class="table">
+        <tr>
+            <th>Quiz</th>
+            <th>Subject</th>
+            <th>Score</th>
+        </tr>
+        {{#each grades}}
+        <tr>
+            <td>{{this.quizname}}</td>
+            <td>{{this.subject}}</td>
+            <td>{{this.score}}</td>
+        </tr>
+        {{/each}}
+    </table>
+    <footer>
+        @copyrights taptroll.ca.reserved.
+    </footer>
+</body>
+
+</html>

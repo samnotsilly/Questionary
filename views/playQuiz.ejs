@@ -1,0 +1,98 @@
+<div id="layoutSidenav">
+    <%- include('./layouts/sidenav') %>
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                        <div class="card shadow-lg border-0 rounded-lg mt-5">
+                            <div class="card-header">
+                                <h3 class="font-weight-light mb-4"><%=quiz.name%></h3>
+                                <div class="d-flex justify-content-between">
+                                    <h6>Subject : <%=quiz.subjectname%></h6>
+                                    <h6>Date: <%= new Date().toISOString().split('T')[0]%></h6>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <form method="post" action="/playquiz">
+                                    <input type="hidden" name="quizid" value="<%=quiz.quizid%>" />
+
+                                    <% for(var i = 0; i < quiz.questions.length; i++) { %>
+                                    <div class="row mb-3">
+                                        <div class="col-md-12">
+                                            <h6>
+                                                Question <%=i+1%>
+                                            </h6>
+                                            <h3>
+                                                <%=quiz.questions[i].questionName%>
+                                            </h3>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio"
+                                                    name="question_<%=quiz.questions[i].questionid%>"
+                                                    id="question<%=quiz.questions[i].questionid%>1"
+                                                    value="<%=quiz.questions[i]['option1']%>">
+                                                <label class="form-check-label"
+                                                    for="question<%=quiz.questions[i].questionid%>1">
+                                                    <%=quiz.questions[i]['option1']%>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio"
+                                                    name="question_<%=quiz.questions[i].questionid%>"
+                                                    id="question<%=quiz.questions[i].questionid%>2"
+                                                    value="<%=quiz.questions[i]['option2']%>">
+                                                <label class="form-check-label"
+                                                    for="question<%=quiz.questions[i].questionid%>2">
+                                                    <%=quiz.questions[i]['option2']%>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio"
+                                                    name="question_<%=quiz.questions[i].questionid%>"
+                                                    id="question<%=quiz.questions[i].questionid%>3"
+                                                    value="<%=quiz.questions[i]['option3']%>">
+                                                <label class="form-check-label"
+                                                    for="question<%=quiz.questions[i].questionid%>3">
+                                                    <%=quiz.questions[i]['option3']%>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio"
+                                                    name="question_<%=quiz.questions[i].questionid%>"
+                                                    id="question<%=quiz.questions[i].questionid%>4"
+                                                    value="<%=quiz.questions[i]['option4']%>">
+                                                <label class="form-check-label"
+                                                    for="question<%=quiz.questions[i].questionid%>4">
+                                                    <%=quiz.questions[i]['option4']%>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                    <div class="mt-4 mb-0">
+                                        <div class="d-grid">
+                                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<script>
+    const question = JSON.parse('<%-JSON.stringify(quiz) %>').questions || [];
+    console.log(question);
+
+</script>

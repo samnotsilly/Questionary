@@ -1,0 +1,39 @@
+{
+  "data": {
+    "headers": {
+      "srno": "Sr no.",
+      "quizname": "Quiz name",
+      "subject": "Subject",
+      "score": "Score",
+      "action": "Action"
+    },
+    "rows": [
+      {
+        "srno": "1",
+        "quizname": "Quiz 1",
+        "subject": "DBMS",
+        "score": "100/100",
+        "action": [
+          {
+            "actionIcon": "fas fa-check-circle text-success",
+            "actionText": "Given",
+            "redirectUrl": ""
+          }
+        ]
+      },
+      {
+        "srno": "2",
+        "quizname": "Quiz 1",
+        "subject": "Javascript",
+        "score": "-/100",
+        "action": [
+          {
+            "actionIcon": null,
+            "actionText": "Start quiz",
+            "redirectUrl": "/playQuiz"
+          }
+        ]
+      }
+    ]
+  }
+}

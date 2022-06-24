@@ -1,0 +1,55 @@
+<div id="layoutSidenav">
+    <%- include('./layouts/sidenav') %>
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <h1 class="mt-4">Add course</h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item"><a href="/listcourse">Course list</a></li>
+                    <li class="breadcrumb-item active">Add course</li>
+                </ol>
+                <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                        <div class="card shadow-lg border-0 rounded-lg mt-5">
+                            <div class="card-header">
+                                <h3 class="text-center font-weight-light my-4">Create Course</h3>
+                            </div>
+                            <div class="card-body">
+                                <form method="post" action="/addcourse">
+                                    <% if(!isAdd) { %>
+                                    <input type="hidden" name="courseid" value="<%=course.courseid%>" />
+                                    <% } %>
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="inputCourseName" type="text" name="coursename"
+                                            placeholder="Enter course name" value="<%=course.coursename%>" />
+                                        <label for="inputCourseName">Course name</label>
+                                    </div>
+
+                                    <div id="subject">
+
+                                    </div>
+
+                                    <div class="mt-4 mb-0">
+                                        <div class="d-grid">
+                                            <button type="submit"
+                                                class="btn btn-primary btn-block"><% if(isAdd) { %>Create
+                                                course<% } else {%>
+                                                Update course<% } %></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<script>
+    const isAdd = JSON.parse('<%-JSON.stringify(isAdd) %>');
+    const professors = JSON.parse('<%-JSON.stringify(professors) %>');
+    const subjects = JSON.parse('<%-JSON.stringify(course) %>').subjects || [];
+    con
+
+</script>
